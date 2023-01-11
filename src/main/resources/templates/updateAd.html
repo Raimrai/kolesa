@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th = "http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymleaf-extras-springsecurity5"
+      layout:decorate="layout/main.html">
+<div layout:fragment="mainPage">
+        <div class="container">
+                <div class="row">
+                        <div class="col-6 mx-auto">
+                        <form th:action="@{'/updatead/' + ${updatead.id}}" method="post" >
+                                <div class="row mt-3">
+                                        <div class="col-12">
+                                                <label th:text="#{label.photo}"></label>
+                                                <input type="hidden" name="id" th:value="${updatead.id}">
+                                        </div>
+                                </div>
+                                <div class="row">
+                                        <div class="col-12">
+                                                <input class="form-control" type="file"  name="photo">
+                                        </div>
+                                </div>
+                                <div class="row">
+                                        <div class="col-12">
+                                                <label th:text="#{label.city}"></label>
+                                        </div>
+                                </div>
+                                <div class="row">
+                                        <div class="col-12">
+                                                <select name="city.id" class="form-control">
+                                                        <option th:each="ct : ${city}" th:value="${ct.id}" th:text="${ct.city}" th:selected="${ct.id==updatead.city.id}"></option>
+                                                </select>
+                                        </div>
+                                </div>
+                                <div class="row mt-3">
+                                        <div class="col-12">
+                                                <label th:text="#{label.brand}"></label>
+                                        </div>
+                                </div>
+                                <div class="row">
+                                        <div class="col-12">
+                                                <select name="brand.id" class="form-control" >
+                                                        <option th:each="ml : ${model}"  th:value="${ml.brand.id}" th:text="${ml.brand.brand}" th:selected="${ml.brand.id==updatead.model.brand.id}"></option>
+                                                </select>
+                                        </div>
+                                </div>
+                                <div class="row mt-3">
+                                        <div class="col-12">
+                                                <label th:text="#{label.model}"></label>
+                                        </div>
+                                </div>
+                                <div class="row">
+                                        <div class="col-12">
+                                                <select name="model.id" class="form-control">
+                                                        <option th:each="ml : ${model}" th:value="${ml.id}" th:text="${ml.model}" th:selected="${ml.id==updatead.model.id}"></option>
+                                                </select>
+                                        </div>
+                                </div>
+                                <div class="row mt-3">
+                                        <div class="col-12">
+                                                <label th:text="#{label.yearOfIssue}"></label>
+                                        </div>
+                                </div>
+                                <div class="row">
+                                        <div class="col-12">
+                                                <input class="form-control"  type="number" min="1990" max="2023" name="yearOfIssue" th:value="${updatead.yearOfIssue}">
+                                        </div>
+                                </div>
+
+                                <div class="row mt-3">
+                                        <div class="col-12">
+                                                <label th:text="#{label.price}"></label>
+                                        </div>
+                                </div>
+                                <div class="row">
+                                        <div class="col-12">
+                                                <input class="form-control"  type="number" name="price" th:value="${updatead.price}">
+                                        </div>
+                                </div>
+                                <div class="row mt-3">
+                                        <div class="col-12">
+                                                <label th:text="#{label.engineType}"></label>
+                                        </div>
+                                </div>
+                                <div class="row">
+                                        <div class="col-12">
+                                                <select name="engineType.id" class="form-control">
+                                                        <option th:each="eg : ${engineType}" th:value="${eg.id}" th:text="${eg.engineType}" th:selected="${eg.id==updatead.engineType.id}"></option>
+                                                </select>
+                                        </div>
+                                </div>
+                                <div class="row mt-3">
+                                        <div class="col-12">
+                                                <label th:text="#{label.mileage}"></label>
+                                        </div>
+                                </div>
+                                <div class="row">
+                                        <div class="col-12">
+                                                <input class="form-control"  type="number" name="mileage" th:value="${updatead.mileage}" >
+                                        </div>
+                                </div>
+                                <div class="row mt-3">
+                                        <div class="col-12">
+                                                <label th:text="#{label.engineVolume}"></label>
+                                        </div>
+                                </div>
+                                <div class="row">
+                                        <div class="col-12">
+                                                <select class="form-control"  name="engineVolume" th:value="${updatead.engineVolume}">
+                                                        <option></option>
+                                                        <option>0.6</option>
+                                                        <option>0.8</option>
+                                                        <option>1.6</option>
+                                                        <option>1.8</option>
+                                                        <option>2</option>
+                                                        <option>2.4</option>
+                                                        <option>2.5</option>
+                                                        <option>2.7</option>
+                                                        <option>3</option>
+                                                        <option>3.5</option>
+                                                        <option>4</option>
+                                                        <option>4.5</option>
+                                                        <option>5</option>
+                                                        <option>5.4</option>
+                                                </select>
+                                        </div>
+                                </div>
+                                <div class="row mt-3">
+                                        <div class="col-12">
+                                                <label th:text="#{label.color}"></label>
+                                        </div>
+                                </div>
+                                <div class="row">
+                                        <div class="col-12">
+                                                <select name="color.id" class="form-control">
+                                                        <option th:each="cl : ${color}" th:value="${cl.id}" th:text="${cl.color}" th:selected="${cl.id==updatead.color.id}"></option>
+                                                </select>
+                                        </div>
+                                </div>
+                                <div class="row mt-3">
+                                        <div class="col-12">
+                                                <label th:text="#{label.carBody}"></label>
+                                        </div>
+                                </div>
+                                <div class="row">
+                                        <div class="col-12">
+                                                <select name="carBody.id" class="form-control">
+                                                        <option th:each="cb : ${carBody}" th:value="${cb.id}" th:text="${cb.carBody}" th:selected="${cb.id==updatead.carBody.id}"></option>
+                                                </select>
+                                        </div>
+                                </div>
+                                <div class="row mt-3">
+                                        <div class="col-12">
+                                                <label th:text="#{label.gearbox}"></label>
+                                        </div>
+                                </div>
+                                <div class="row">
+                                        <div class="col-12">
+                                                <select name="gearbox.id" class="form-control">
+                                                        <option th:each="gr : ${gearbox}" th:value="${gr.id}" th:text="${gr.gearbox}" th:selected="${gr.id==updatead.gearbox.id}"></option>
+                                                </select>
+                                        </div>
+                                </div>
+                                <div class="d-flex">
+                                <div class="row mt-3">
+                                        <div class="col-6 my-2">
+                                                <button type="submit" class="btn btn-success" th:text="#{button.update}"></button>
+                                        </div>
+                                </div>
+                                </form>
+                                <form th:action="@{'/deletead/' + ${updatead.id}}" method="post" class="mt-3 mx-3">
+                                <div class="col-6 my-2">
+                                        <input type="hidden" name="id" th:value="${updatead.id}">
+                                </div>
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" th:text="#{button.delete}">
+                                        </button>
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                        <input type="hidden" name="id" th:value="${updatead.id}">
+                                                                        <h1 class="modal-title fs-5" id="exampleModalLabel"th:text="#{h1.deletead}"></h1>
+                                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                        <p th:text="#{p.sure}"></p>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" th:text="#{button.back}"></button>
+                                                                        <button type="submit" class="btn btn-danger" th:text="#{button.delete}"></button>
+                                                                </div>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </form>
+                                </div>
+                        </div>
+
+                </div>
+        </div>
+</div>
+</html>
