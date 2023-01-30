@@ -28,4 +28,9 @@ public class GearboxServiceImpl implements GearboxService {
     public List<Gearbox> getAllGearbox() {
         return gearBoxRepository.findAll();
     }
+
+    @Override
+    public Gearbox addGearbox(Gearbox gearbox) {
+        return gearBoxRepository.save(gearbox);
+    }
 }

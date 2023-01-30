@@ -5,7 +5,7 @@
       layout:decorate="layout/main.html">
 <div layout:fragment="search">
         </div>
-        <div class="col-4" layout:fragment="mainPage" th:each="cr :${car}">
+        <div class="col-3" layout:fragment="mainPage" th:each="cr :${car}">
         <div class="card mt-3" style="width: 18rem;">
                 <img th:src="@{'/viewpic/'+${cr.photo}}" class="card-img-top" alt="">
                 <div class="card-body">

@@ -63,9 +63,7 @@ public class FileUploadServiceImpl implements FileUploadService {
                 Path path = Paths.get(uploadUrl +fileName);
                 Files.write(path, bytes);
                 fileNames.add(fileName);
-
             }
-
             System.out.println(fileNames);
 
             Ad ad = new Ad();

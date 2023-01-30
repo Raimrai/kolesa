@@ -11,4 +11,5 @@ public interface ModelService {
     List<Model> getAllModel();
     Optional<Model> findModel(Long id);
     List<Model> getAllByBrand(Brand brand);
+    Model modelAdd(Model model);
 }

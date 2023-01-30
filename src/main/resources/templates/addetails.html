@@ -54,7 +54,7 @@
                                 <p th:text="#{label.price} + ':'"></p>
                             </td>
                             <td class="ps-3">
-                                <p th:text="${cr.price}"></p>
+                                <p th:text="${cr.price}">kzt</p>
                             </td>
                         </tr>
                         <tr>
@@ -168,7 +168,9 @@
                 </div>
                 <p class="mb-1"></p>
                 <small class="text-muted my-1">
-                    <button type="submit" class="btn btn-secondary" th:text="#{button.addComment}"></button>
+                    <div class="mt-2 d-flex justify-content-end">
+                        <button type="submit" class="btn btn-secondary" th:text="#{button.addComment}"></button>
+                    </div>
                 </small>
             </div>
         </form>

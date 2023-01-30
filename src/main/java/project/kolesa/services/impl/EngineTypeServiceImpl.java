@@ -28,4 +28,9 @@ public class EngineTypeServiceImpl implements EngineTypeService {
     public List<EngineType> getAllEngineType() {
         return engineTypeRepository.findAll();
     }
+
+    @Override
+    public EngineType addEngineType(EngineType engineType) {
+        return engineTypeRepository.save(engineType);
+    }
 }

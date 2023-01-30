@@ -45,12 +45,12 @@ public class SecurityConfig {
                 .loginProcessingUrl("/auth")
                 .usernameParameter("user_email")
                 .passwordParameter("user_password")
-                .loginPage("/enter")
+                .loginPage("/signin")
                 .defaultSuccessUrl("/")
-                .failureUrl("/enter?error");
+                .failureUrl("/signin?error");
 
         http.logout()
-                .logoutSuccessUrl("/enter")
+                .logoutSuccessUrl("/signin")
                 .logoutUrl("/exit");
 
         return http.build();

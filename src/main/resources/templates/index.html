@@ -7,7 +7,7 @@
     <form th:action="@{'/search'}" method="get">
         <div class="container" style="background-color: #fff2cf">
             <div class="row">
-                <div class="col-3">
+                <div class="col-4">
                     <div class="d-flex justify-content-center">
                         <label th:text="#{label.city}"></label>
                     </div>
@@ -16,7 +16,7 @@
                         <option th:each="ct : ${city}" th:value="${ct.id}" th:text="${ct.city}"></option>
                     </select>
                 </div>
-                <div class="col-3">
+                <div class="col-4">
                     <div class="d-flex justify-content-center">
                         <label th:text="#{label.brand}"></label>
                     </div>
@@ -26,7 +26,7 @@
                         <option th:each="br : ${brand}" th:value="${br.id}" th:text="${br.brand}"></option>
                     </select>
                 </div>
-                <div class="col-3">
+                <div class="col-4">
                     <div class="d-flex justify-content-center">
                         <label th:text="#{label.color}"></label>
                     </div>
@@ -36,7 +36,7 @@
                         <option th:each="cl : ${color}" th:value="${cl.id}" th:text="${cl.color}"></option>
                     </select>
                 </div>
-                <div class="col-3">
+                <div class="col-4">
                     <div class="d-flex justify-content-center">
                         <label th:text="#{label.gearbox}"></label>
                     </div>
@@ -65,15 +65,6 @@
                         <option th:each="cr : ${carBody}" th:value="${cr.id}" th:text="${cr.carBody}"></option>
                     </select>
                 </div>
-                <div class="col-4">
-                    <div class="d-flex justify-content-center">
-                        <label th:text="#{label.model}"></label>
-                    </div>
-                    <select name="model.id" class="form-control">
-                        <option></option>
-                        <option th:each="ml : ${model}" th:value="${ml.id}" th:text="${ml.model}"></option>
-                    </select>
-                </div>
                 <div class="col-12 d-flex justify-content-center">
                     <button type="submit" class="btn btn-primary my-3" th:text="#{buttonshowadd}"></button>
                 </div>
@@ -93,7 +84,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </div>

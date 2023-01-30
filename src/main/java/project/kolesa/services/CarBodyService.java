@@ -9,4 +9,5 @@ public interface CarBodyService {
     CarBody getCarBody(Long id);
     Optional<CarBody>findCarBody(Long id);
     List<CarBody> getAllCarBody();
+    CarBody addCarBody(CarBody carBody);
 }

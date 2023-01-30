@@ -4,10 +4,54 @@
       xmlns:sec="http://www.thymeleaf.org/thymleaf-extras-springsecurity5"
       layout:decorate="layout/main.html">
 <div layout:fragment="mainPage">
-    <h1>SECURITY SAMPLE</h1>
-    <h2>WELCOME TO ADMIN PANEL</h2>
-    <h2>DEAR <span th:text="${#authentication.getPrincipal().fullName}"></span></h2>
-    <a th:href="@{'/'}">HOME PAGE</a>
+       <div class="container">
+           <div class="row">
+                   <form th:action="@{'/adminpanel'}" method="post" class="col-4">
+                       <div class="d-flex justify-content-center">
+                           <label th:text="#{label.addColor}"></label>
+                       </div>
+                           <input class="form-control" type="text" required name="color">
+                       <div class="mt-2 d-flex justify-content-end">
+                           <button type="submit" class="btn btn-primary" th:text="#{button.add}"></button>
+                       </div>
+                   </form>
+                   <form th:action="@{'/admincity'}" method="post" class="col-4">
+                       <div class="d-flex justify-content-center">
+                           <label th:text="#{label.addCity}"></label>
+                       </div>
+                           <input class="form-control" type="text" required name="city">
+                       <div class="mt-2 d-flex justify-content-end">
+                           <button type="submit" class="btn btn-primary" th:text="#{button.add}"></button>
+                       </div>
+                   </form>
+                    <form th:action="@{'/admincarbody'}" method="post" class="col-4">
+                       <div class="d-flex justify-content-center">
+                           <label th:text="#{label.addCarbody}"></label>
+                       </div>
+                           <input class="form-control" type="text" required name="carBody">
+                        <div class="mt-2 d-flex justify-content-end">
+                            <button type="submit" class="btn btn-primary" th:text="#{button.add}"></button>
+                        </div>
+                    </form>
+                    <form th:action="@{'/admingearbox'}" method="post" class="col-4">
+                       <div class="d-flex justify-content-center">
+                           <label th:text="#{label.addGearbox}"></label>
+                       </div>
+                           <input class="form-control" type="text" required name="gearbox">
+                        <div class="mt-2 d-flex justify-content-end">
+                            <button type="submit" class="btn btn-primary" th:text="#{button.add}"></button>
+                        </div>
+                    </form>
+                    <form th:action="@{'/adminengineType'}" method="post" class="col-4">
+                       <div class="d-flex justify-content-center">
+                           <label th:text="#{label.addEngineType}"></label>
+                       </div>
+                           <input class="form-control" type="text" required name="engineType">
+                        <div class="mt-2 d-flex justify-content-end">
+                            <button type="submit" class="btn btn-primary" th:text="#{button.add}"></button>
+                        </div>
+                    </form>
+           </div>
+       </div>
 </div>
-
 </html>

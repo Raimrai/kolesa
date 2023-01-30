@@ -8,22 +8,22 @@
         <div class="row">
             <div class="col-6 mx-auto">
                 <form th:action="@{'/uploadphoto'}" method="post" enctype="multipart/form-data">
-                    <div class="row mt-3">
+                    <div class="row">
                         <div class="col-12">
                             <label th:text="#{label.photo}"></label>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row mt-2">
                         <div class="col-12">
                             <input class="form-control" multiple type="file" required name="photo">
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row mt-2">
                         <div class="col-12">
                             <label th:text="#{label.city}"></label>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row mt-2">
                         <div class="col-12">
                             <select name="city.id" class="form-control" required>
                                 <option></option>
@@ -31,56 +31,57 @@
                             </select>
                         </div>
                     </div>
-                    <div class="row mt-3">
+                    <div class="row mt-2">
                         <div class="col-12">
                             <label th:text="#{label.brand}"></label>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row mt-2">
                         <div class="col-12">
                             <select id="brandInput" name="brand.id" class="form-control" required>
                                 <option></option>
                                 <option th:each="br : ${brand}" th:value="${br.id}" th:text="${br.brand}"></option>
                             </select>
                         </div>
-                        <div class="row mt-3">
+                        <div class="row mt-2">
                             <div class="col-12">
                                 <label th:text="#{label.model}"></label>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row mt-2">
                             <div class="col-12" id="modelInputContainer">
                                 <select class="form-control">
                                     <option></option>
                                 </select>
                             </div>
                         </div>
-                        <div class="row mt-3">
+                        <div class="row mt-2">
                             <div class="col-12">
                                 <label th:text="#{label.yearOfIssue}"></label>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row mt-2">
                             <div class="col-12">
-                                <input class="form-control" type="number" required min="1990" max="2023" name="yearOfIssue">
+                                <input class="form-control" type="number" required min="1990" max="2023"
+                                       name="yearOfIssue">
                             </div>
                         </div>
-                        <div class="row mt-3">
+                        <div class="row mt-2">
                             <div class="col-12">
                                 <label th:text="#{label.price}"></label>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row mt-2">
                             <div class="col-12">
                                 <input class="form-control" required type="number" name="price">
                             </div>
                         </div>
-                        <div class="row mt-3">
+                        <div class="row mt-2">
                             <div class="col-12">
                                 <label th:text="#{label.engineType}"></label>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row mt-2">
                             <div class="col-12">
                                 <select name="engineType.id" class="form-control" required>
                                     <option></option>
@@ -89,24 +90,24 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="row mt-3">
+                        <div class="row mt-2">
                             <div class="col-12">
                                 <label th:text="#{label.mileage}"></label>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row mt-2">
                             <div class="col-12">
                                 <input class="form-control" type="number" name="mileage" required>
                             </div>
                         </div>
-                        <div class="row mt-3">
+                        <div class="row mt-2">
                             <div class="col-12">
                                 <label th:text="#{label.engineVolume}"></label>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row mt-2">
                             <div class="col-12">
-                                <select class="form-control"  name="engineVolume" required>
+                                <select class="form-control" name="engineVolume" required>
                                     <option></option>
                                     <option>0.6</option>
                                     <option>0.8</option>
@@ -125,25 +126,25 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="row mt-3">
+                        <div class="row mt-2">
                             <div class="col-12">
                                 <label th:text="#{label.color}"></label>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row mt-2">
                             <div class="col-12">
                                 <select name="color.id" class="form-control" required>
                                     <option></option>
-                                    <option th:each="cl : ${color}" th:value="${cl.id}" th:text="${cl.color}" ></option>
+                                    <option th:each="cl : ${color}" th:value="${cl.id}" th:text="${cl.color}"></option>
                                 </select>
                             </div>
                         </div>
-                        <div class="row mt-3">
+                        <div class="row mt-2">
                             <div class="col-12">
                                 <label th:text="#{label.carBody}"></label>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row mt-2">
                             <div class="col-12">
                                 <select name="carBody.id" class="form-control" required>
                                     <option></option>
@@ -152,12 +153,12 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="row mt-3">
+                        <div class="row mt-2">
                             <div class="col-12">
                                 <label th:text="#{label.gearbox}"></label>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row mt-2">
                             <div class="col-12">
                                 <select name="gearbox.id" class="form-control" required>
                                     <option></option>
@@ -186,8 +187,8 @@
                 xhr.open("GET", "/api/brands/" + brandInput.value + "/models");
                 xhr.send();
 
-                xhr.onload = function() {
-                    if(xhr.status === 200) {
+                xhr.onload = function () {
+                    if (xhr.status === 200) {
                         modelInputContainer.innerHTML = buildModelInput(JSON.parse(xhr.response));
                     }
                 }

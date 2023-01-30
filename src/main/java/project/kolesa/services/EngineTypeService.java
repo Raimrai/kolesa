@@ -9,4 +9,5 @@ public interface EngineTypeService {
     EngineType getEngineType(Long id);
     Optional<EngineType> findEngineType(Long id);
     List<EngineType> getAllEngineType();
+    EngineType addEngineType(EngineType engineType);
 }

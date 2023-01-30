@@ -1,7 +1,6 @@
 package project.kolesa.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +8,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "car_body")
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
 public class CarBody extends BaseEntity{

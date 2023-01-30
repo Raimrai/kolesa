@@ -9,4 +9,5 @@ public interface CityService {
     City  getCity(Long id);
     Optional<City>findCity(Long id);
     List<City> getAllCity();
+    City addCity(City city);
 }

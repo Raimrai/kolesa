@@ -36,7 +36,7 @@ public class User extends BaseEntity implements UserDetails {
     private Set<Ad> favorites=new HashSet<>();
 
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Permission> permissions;
 
     @Override

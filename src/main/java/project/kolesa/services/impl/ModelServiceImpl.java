@@ -31,6 +31,11 @@ public class ModelServiceImpl implements ModelService {
     }
 
     @Override
+    public Model modelAdd(Model model) {
+        return modelRepository.save(model);
+    }
+
+    @Override
     public List<Model> getAllByBrand(Brand brand) {
         return modelRepository.findAllByBrand(brand);
     }

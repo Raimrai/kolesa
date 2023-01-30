@@ -9,4 +9,5 @@ public interface GearboxService {
     Gearbox getGearbox(Long id);
     Optional<Gearbox> findGearbox(Long id);
     List<Gearbox> getAllGearbox();
+    Gearbox addGearbox(Gearbox gearbox);
 }

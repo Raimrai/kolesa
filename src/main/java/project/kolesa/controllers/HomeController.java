@@ -56,9 +56,14 @@ public class HomeController {
         return "index";
     }
 
-    @GetMapping(value = "/enter")
-    public String enterPage() {
-        return "enter";
+    @GetMapping(value = "/register")
+    public String registerPage() {
+        return "register";
+    }
+
+    @GetMapping(value = "/signin")
+    public String signinPage() {
+        return "signin";
     }
 
     @GetMapping(value = "/profile")
@@ -69,7 +74,34 @@ public class HomeController {
 
     @GetMapping(value = "/adminpanel")
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
-    public String adminPnelPage() {
+    public String adminPanelPage() {
+        return "admin";
+    }
+
+    @PostMapping(value = "/adminpanel")
+    public String adminPanelPageAd(@RequestParam(name = "color") String color) {
+        colorService.adColor(Color.builder().color(color).build());
+        return "admin";
+    }
+
+    @PostMapping(value = "/admincity")
+    public String cityAdd(@RequestParam(name = "city") String city) {
+        cityService.addCity(City.builder().city(city).build());
+        return "admin";
+    }
+    @PostMapping(value = "/admincarbody")
+    public String carBodyAdd(@RequestParam(name = "carBody") String carBody) {
+        carBodyService.addCarBody(CarBody.builder().carBody(carBody).build());
+        return "admin";
+    }
+    @PostMapping(value = "/admingearbox")
+    public String gearboxAdd(@RequestParam(name = "gearbox") String gearbox) {
+        gearboxService.addGearbox(Gearbox.builder().gearbox(gearbox).build());
+        return "admin";
+    }
+    @PostMapping(value = "/adminengineType")
+    public String engineTypeAdd(@RequestParam(name = "engineType") String engineType) {
+        engineTypeService.addEngineType(EngineType.builder().engineType(engineType).build());
         return "admin";
     }
 
@@ -84,17 +116,12 @@ public class HomeController {
         return "403";
     }
 
-    @GetMapping(value = "/signup")
-    public String signUpPage() {
-        return "signup";
-    }
-
     @PostMapping(value = "/signup")
     public String signUp(UserDto userDto) {
         if (userService.registerUser(userDto)) {
-            return "redirect:/enter";
+            return "redirect:/signin";
         }
-        return "redirect:/signup?error";
+        return "redirect:/register?error";
     }
 
     @PreAuthorize("isAuthenticated()")
@@ -161,7 +188,7 @@ public class HomeController {
         if (user != null) {
             isFavorite = user.getFavorites().contains(ad);
         }
-        model.addAttribute("user",user);
+        model.addAttribute("user", user);
         model.addAttribute("isFavorite", isFavorite);
 
         return "addetails";
@@ -170,8 +197,6 @@ public class HomeController {
     @PreAuthorize("isAuthenticated()")
     @PostMapping(value = "/uploadphoto")
     public String uploadPhoto(@RequestParam(name = "photo") MultipartFile[] file, AdDto adDto) {
-
-
         if (!fileUploadService.uploadPhoto(file, adDto)) {
             return "redirect:/error=Unable  to  add photo";
         }
@@ -225,7 +250,7 @@ public class HomeController {
     public String deleteComment(@RequestParam(name = "id") Long id) {
         var comment = commentService.getCommentById(id);
         commentService.deleteComment(comment);
-        return "redirect:/addetails/" + comment.getAd().getId() ;
+        return "redirect:/addetails/" + comment.getAd().getId();
     }
 
     @GetMapping(value = "/search")
@@ -245,7 +270,7 @@ public class HomeController {
         var engineType = engineTypeOpt.flatMap(e -> engineTypeService.findEngineType(e));
         var models = modelOpt.flatMap(e -> modelService.findModel(e));
 
-        List<Ad> ad = adService.search(brand,city,color,gearbox,carBody,engineType,models);
+        List<Ad> ad = adService.search(brand, city, color, gearbox, carBody, engineType, models);
         model.addAttribute("car", ad);
         return "allad";
     }
@@ -258,6 +283,7 @@ public class HomeController {
         model.addAttribute("car", ads);
         return "myad";
     }
+
     @PreAuthorize("isAuthenticated()")
     @GetMapping(value = "/favoritead")
     public String favoriteAd(Model model) {

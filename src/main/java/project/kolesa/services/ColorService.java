@@ -7,6 +7,7 @@ import java.util.Optional;
 
 public interface ColorService {
     Color getColor(Long id);
+    Color adColor(Color color);
     Optional<Color> findColor(Long id);
     List<Color> getAllColor();
 }

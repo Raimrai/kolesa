@@ -13,11 +13,12 @@ import java.util.List;
 @Repository
 public interface AdRepository extends JpaRepository<Ad, Long> {
     List<Ad> findAllByAuthor(User user);
+
     @Query("select ad from Ad ad where (ad.carBody = :carBody or :carBody is null) and (ad.color  = :color or :color is null) " +
             " and (ad.city =:city or :city is null ) and (ad.gearbox =:gearbox or :gearbox is null ) " +
             " and (ad.engineType =:engineType or :engineType is null ) and (ad.model =:model or :model is null )" +
             " and (ad.model.brand = :brand or :brand is null )")
-    List<Ad> search(@Param("carBody") CarBody carBody, @Param("color") Color color, @Param("city")City city,
-                    @Param("gearbox")Gearbox gearbox, @Param("engineType")EngineType engineType,@Param("model")Model model,
+    List<Ad> search(@Param("carBody") CarBody carBody, @Param("color") Color color, @Param("city") City city,
+                    @Param("gearbox") Gearbox gearbox, @Param("engineType") EngineType engineType, @Param("model") Model model,
                     @Param("brand") Brand brand);
 }

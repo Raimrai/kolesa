@@ -25,6 +25,11 @@ public class CarBodyServiceImpl implements CarBodyService {
     }
 
     @Override
+    public CarBody addCarBody(CarBody carBody) {
+        return carBodyRepository.save(carBody);
+    }
+
+    @Override
     public Optional<CarBody> findCarBody(Long id) {
         return carBodyRepository.findById(id);
     }

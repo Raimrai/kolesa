@@ -9,6 +9,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import project.kolesa.dto.UserDto;
+import project.kolesa.mapper.UserMapper;
 import project.kolesa.model.Ad;
 import project.kolesa.model.Permission;
 import project.kolesa.model.User;
@@ -23,7 +24,8 @@ import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
-
+    @Autowired
+    private UserMapper userMapper;
 
     @Autowired
     private UserRepository userRepository;
@@ -46,15 +48,14 @@ public class UserServiceImpl implements UserService {
             User checkUser = userRepository.findByEmail(userDto.getEmail());
             if (checkUser == null) {
                 Permission permission = permissionRepository.findByName("ROLE_USER");
-                User user = new User();
-                user.setEmail(userDto.getEmail());
+                User user = userMapper.toEntity(userDto);
                 user.setPassword(passwordEncoder.encode(userDto.getPassword()));
-                user.setFullName(userDto.getFullName());
-                user.setPhoneNumber(userDto.getPhoneNumber());
                 List<Permission> permissions = new ArrayList<>();
                 permissions.add(permission);
                 user.setPermissions(permissions);
+
                 User newUser = userRepository.save(user);
+
                 return newUser.getId() != null;
             }
         }
@@ -77,8 +78,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public void removeFavorite(Ad ad) {
         User user = getCurrentUser();
-        var  favorites = user.getFavorites();
-        if (favorites.contains(ad)){
+        var favorites = user.getFavorites();
+        if (favorites.contains(ad)) {
             favorites.remove(ad);
             user.setFavorites(new HashSet<>());
             userRepository.saveAndFlush(user);
